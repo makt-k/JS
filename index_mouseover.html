@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <style type="text/css">
+    body>div {
+      position: relative;
+      height:200px;
+      width: 200px;
+      margin: 15px;
+      float:left;
+      background: steelblue;
+      margin-top: 100px;
+      border-radius: 30%;
+    }
+    body>div:before,body>div:after {
+      content:"";
+      position: absolute;
+      border: 50px solid transparent;
+      border-left: 50px solid orange;
+      top: -50px;
+    }
+
+    body>div:after {
+      top:100%;
+      margin-top:-50px;
+    }
+
+    body>div>div{
+      height:0;
+      width:100px;
+      border-bottom: 2px solid black;
+      border-left: 2px solid black;
+      float:right;
+      margin-top: 49.5%;
+      border-bottom-left-radius: 30px;
+    }
+
+    .smiling-fish>div {
+      height: 26px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="one-fish"><div></div></div>
+  <div id="two-fish"><div></div></div>
+  <div id="three-fish"><div></div></div>
+  <div id="blue-fish"><div></div></div>
+  <div id="fab-fish"><div></div></div>
+  <p>Last Fish to Smile: <span></span></p>
+<script>
+$("body").on("mouseenter", ">div", function(){
+    this.className = "smiling-fish";
+    $('span').text(this.id);
+}).on("mouseleave", ">div", function(){
+    this.className = "";
+});
+
+$('body').append('<div id="new-fish"><div></div></div>')
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <p>My Paragraph</p>
+  <p>My Paragraph</p>
+  <p>My Paragraph</p>
+  <p>My Paragraph</p>
+  <p>My Paragraph</p>
+  <p>My Paragraph</p>
+
+
+  <script>
+    var myapp = {};
+    myapp.color = "pink";
+    myapp.paint = function(node){
+      node.style.color = this.color;
+    }
+    var pElements = Array.prototype.slice.call(document.getElementsByTagName('p'));
+    // need to bind the functionality to the function itself, which is within the variable myapp
+    pElements.forEach(myapp.paint.bind(myapp));
+
+    //  function paintNodes(nodes, callback, callback_obj){   --- callback_obj is what the this pointer is
+    //    for(var i=0; i<nodes.length; i++){
+    //      callback.call(callback_obj, nodes[i]);   --- .call is binds the callback
+    //    }
+    //  }
+    // paintNodes(pElements, myapp.paint, myapp);
+  </script>
+</body>
+</html>
